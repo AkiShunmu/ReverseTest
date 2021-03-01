@@ -1,4 +1,4 @@
-package com.geely.seckill.pojo;
+package com.geely.seckill.user.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.util.Date;

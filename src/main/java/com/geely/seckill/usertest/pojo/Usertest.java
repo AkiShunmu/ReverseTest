@@ -1,4 +1,4 @@
-package com.geely.seckill.pojo;
+package com.geely.seckill.usertest.pojo;
 
 import java.io.Serializable;
 import lombok.Data;

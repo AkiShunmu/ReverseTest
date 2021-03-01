@@ -1,4 +1,4 @@
-package com.geely.seckill.controller;
+package com.geely.seckill.user.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @since 2021-03-01
  */
 @Controller
-@RequestMapping("/usertest")
-public class UsertestController {
+@RequestMapping("/usertest/user")
+public class UserController {
 
 }

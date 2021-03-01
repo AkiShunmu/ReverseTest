@@ -1,8 +1,8 @@
-package com.geely.seckill.service.impl;
+package com.geely.seckill.usertest.service.impl;
 
-import com.geely.seckill.pojo.Usertest;
-import com.geely.seckill.mapper.UsertestMapper;
-import com.geely.seckill.service.IUsertestService;
+import com.geely.seckill.usertest.pojo.Usertest;
+import com.geely.seckill.usertest.mapper.UsertestMapper;
+import com.geely.seckill.usertest.service.IUsertestService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

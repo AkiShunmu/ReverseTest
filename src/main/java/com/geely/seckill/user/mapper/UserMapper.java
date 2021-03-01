@@ -1,6 +1,6 @@
-package com.geely.seckill.mapper;
+package com.geely.seckill.user.mapper;
 
-import com.geely.seckill.pojo.Usertest;
+import com.geely.seckill.user.pojo.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author qishun
  * @since 2021-03-01
  */
-public interface UsertestMapper extends BaseMapper<Usertest> {
+public interface UserMapper extends BaseMapper<User> {
 
 }

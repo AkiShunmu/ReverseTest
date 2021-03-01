@@ -1,6 +1,6 @@
-package com.geely.seckill.service;
+package com.geely.seckill.user.service;
 
-import com.geely.seckill.pojo.User;
+import com.geely.seckill.user.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
