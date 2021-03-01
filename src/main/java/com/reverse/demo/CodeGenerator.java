@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -56,21 +57,37 @@ public class CodeGenerator {
         gc.setAuthor("jobob");
         gc.setOpen(false);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
+//        mpg.setGlobalConfig(gc);
+        //作者
+        gc.setAuthor("qishun");
+        //打开输出目录
+        gc.setOpen(false);
+        //xml开启 BaseResultMap
+        gc.setBaseResultMap(true);
+        //xml开启 BaseColumnList
+        gc.setBaseColumnList(true);
+        //日期格式，采用Data
+        gc.setDateType(DateType.ONLY_DATE);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/ant?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/shunsql?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("密码");
+        dsc.setPassword("root");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("模块名"));
-        pc.setParent("com.baomidou.ant");
+//        pc.setModuleName(scanner("模块名"));
+        pc.setParent("com.geely.seckill")
+            .setEntity("pojo")
+            .setMapper("mapper")
+            .setService("service")
+            .setServiceImpl("service.impl")
+            .setController("controller");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -93,8 +110,8 @@ public class CodeGenerator {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
-                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
+                return projectPath + "/src/main/resources/mapper/" + tableInfo.getEntityName()
+                        + "Mapper" + StringPool.DOT_XML;
             }
         });
         /*
@@ -141,15 +158,17 @@ public class CodeGenerator {
         strategy.setNaming(NamingStrategy.underline_to_camel);
         //数据库表字段映射到实体的命名策略
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        //strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
         //lombok模型
         strategy.setEntityLombokModel(true);
         //生成 @RestController 控制器
         //strategy.setRestControllerStyle(true);
-        // 公共父类
-        //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
-        // 写于父类中的公共字段
-        //strategy.setSuperEntityColumns("id");
+
+        /*strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");*/
+        /* 公共父类
+        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+         写于父类中的公共字段
+        strategy.setSuperEntityColumns("id");*/
+
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         //表前缀
